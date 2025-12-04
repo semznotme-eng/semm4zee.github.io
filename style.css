@@ -1,3 +1,4 @@
+/* GLOBAL */
 body {
     margin: 0;
     padding: 0;
@@ -32,7 +33,6 @@ body {
 .navbar a {
     color: #fff;
     text-decoration: none;
-    font-size: 15px;
 }
 
 /* HERO */
@@ -64,8 +64,9 @@ body {
     text-align: center;
 }
 
+/* GAMBAR PROJEK (SUDAH KECIL) */
 .project-img {
-    width: 280px;
+    width: 120px;      /* <<< kecil banget biar ga kegedean */
     border-radius: 10px;
     margin-top: 15px;
-    }
+}
