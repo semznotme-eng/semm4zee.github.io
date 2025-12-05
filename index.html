@@ -1,1 +1,256 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio GACOR ULTRA — semznotme-eng</title>
+  <meta name="description" content="Portfolio GACOR ULTRA — semznotme-eng. Frontend, UI/UX, Performance, Animations, ready for GitHub Pages." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#06070a; --surface:#0f1724; --muted:#94a3b8;
+      --accent1:#7c3aed; --accent2:#06b6d4; --glass: rgba(255,255,255,0.04);
+      --card: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --maxw:1100px;
+    }
+    @media (prefers-reduced-motion: reduce){ *{animation-duration:0.001ms !important; transition-duration:0.001ms !important; } }
 
+    html,body{height:100%;margin:0;background:radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent), var(--bg);font-family:Inter,system-ui,Segoe UI,Roboto,-apple-system; color:#e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px;}
+    nav{position:sticky;top:14px;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 20px rgba(2,6,23,0.6);margin-bottom:24px;}
+    .brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:0.3px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;box-shadow:0 6px 18px rgba(124,58,237,0.12);}
+    .links{display:flex;gap:12px;align-items:center}
+    .links a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    .links a:hover{color:white;background:rgba(255,255,255,0.02)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;margin-bottom:28px}
+    .hero-left h1{font-size:2.4rem;margin:0 0 8px 0;line-height:1.02}
+    .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:6px 10px;border-radius:999px;font-weight:700;color:white;font-size:13px;margin-bottom:12px}
+    .lead{color:var(--muted);margin-top:8px;font-size:15px;max-width:55ch}
+
+    .cta{display:flex;gap:12px;margin-top:18px}
+    .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:11px 16px;border-radius:12px;color:white;border:none;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(99,102,241,0.12);}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600}
+
+    /* Card */
+    .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 30px rgba(2,6,23,0.6);}
+
+    /* Mini stats */
+    .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .stat{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.02);min-width:120px;text-align:center}
+    .stat strong{display:block;font-size:18px}
+
+    /* Projects grid */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .project{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .22s ease, box-shadow .22s ease}
+    .project:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(9,9,20,0.6)}
+    .project h4{margin:0 0 6px 0}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Footer */
+    footer{text-align:center;padding:30px 0;color:var(--muted)}
+
+    /* Responsiveness */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .projects{grid-template-columns:1fr}
+      nav{flex-direction:column;gap:12px;align-items:stretch}
+      .container{padding:18px}
+    }
+
+    /* Tiny utilities */
+    .muted{color:var(--muted);font-size:13px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Animated reveal */
+    .reveal{opacity:0;transform:translateY(8px);transition:opacity .6s ease, transform .6s ease;}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* Floating badge */
+    .badge{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent2),var(--accent1));padding:12px 14px;color:white;border-radius:999px;box-shadow:0 10px 30px rgba(99,102,241,0.12);font-weight:700;cursor:pointer;z-index:999}
+    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+
+<nav class="container" role="navigation" aria-label="Main navigation">
+  <div class="brand"><div class="logo" aria-hidden="true">SN</div><div>semznotme-eng<span class="small" style="margin-left:8px;color:var(--muted);font-weight:600">GACOR ULTRA</span></div></div>
+  <div class="links" role="menubar" aria-label="Page links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a id="deployGuide" class="small" href="#" title="Deploy guide">Deploy</a>
+  </div>
+</nav>
+
+<section class="container hero" aria-labelledby="hero-heading">
+  <div class="hero-left">
+    <span class="eyebrow">Portfolio • GACOR ULTRA</span>
+    <h1 id="hero-heading" class="reveal">Hi, I’m <span id="name" contenteditable="true" class="editable">semznotme-eng</span> — I build blazing-fast interfaces.</h1>
+    <p class="lead reveal">Interactive, performance-first front-end developer focused on Core Web Vitals, UX polish and delightful micro-interactions. Klik teks untuk edit langsung.</p>
+
+    <div class="cta reveal">
+      <button class="btn" id="viewProjects">Liat Projects</button>
+      <button class="btn ghost" id="downloadHTML">Download HTML</button>
+    </div>
+
+    <div class="stats reveal" style="margin-top:18px">
+      <div class="stat"><strong>99%</strong><div class="small">Accessibility</div></div>
+      <div class="stat"><strong>1.2s</strong><div class="small">Avg LCP</div></div>
+      <div class="stat"><strong>75</strong><div class="small">Projects</div></div>
+    </div>
+  </div>
+
+  <aside class="card reveal" aria-label="Quick info">
+    <h3 style="margin-top:0">Quick Info</h3>
+    <p class="small">Editable single-file site — perfect for GitHub Pages. No build step required. Auto-saves to browser storage.</p>
+    <div style="margin-top:12px">
+      <button class="btn" id="toggleTheme">Toggle Theme</button>
+    </div>
+  </aside>
+</section>
+
+<section id="about" class="container card reveal" tabindex="-1">
+  <h2>About</h2>
+  <p class="editable" contenteditable="true">Saya fokus membuat antarmuka yang terasa cepat dan menyenangkan. Pengalaman di optimasi bundle, LCP, dan micro-interactions.</p>
+</section>
+
+<section id="projects" class="container reveal">
+  <h2 style="margin-bottom:14px">Selected Projects</h2>
+  <div class="projects card" id="projectGrid" role="list"></div>
+</section>
+
+<section id="contact" class="container card reveal" tabindex="-1">
+  <h2>Contact</h2>
+  <p class="small">Email: <span contenteditable="true" class="editable">you@example.com</span></p>
+  <p class="small">GitHub: <span contenteditable="true" class="editable">github.com/semznotme-eng</span></p>
+</section>
+
+<footer class="container"><small>© 2025 semznotme-eng — Ultra edition. Built with ❤️ — Editable & Optimized</small></footer>
+
+<button class="badge" id="openEditor" aria-controls="projectGrid">GACOR</button>
+
+<script>
+// Minimal state + utilities for "GACOR ULTRA"
+const STORAGE_KEY = 'gacor_ultra_state_v1';
+const defaultState = {
+  name: 'semznotme-eng',
+  about: 'Saya fokus membuat antarmuka yang terasa cepat dan menyenangkan. Pengalaman di optimasi bundle, LCP, dan micro-interactions.',
+  projects: [
+    {title:'Gacor Landing', desc:'High-performance landing with LCP <1.5s'},
+    {title:'Design System', desc:'Component-driven UI & tokens'},
+    {title:'E-commerce PWA', desc:'Fast checkout, offline support'}
+  ],
+  theme: 'dark'
+};
+
+function saveState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+function loadState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || null }catch(e){return null} }
+let state = loadState() || defaultState;
+
+// hydrate editable fields
+document.addEventListener('DOMContentLoaded', ()=>{
+  // Basic fields
+  document.getElementById('name').innerText = state.name;
+  document.querySelector('#about .editable').innerText = state.about;
+  // projects
+  renderProjects();
+  // reveal animations using IntersectionObserver
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // wire buttons
+  document.getElementById('viewProjects').addEventListener('click', ()=> location.href='#projects');
+  document.getElementById('downloadHTML').addEventListener('click', ()=> downloadHTML());
+  document.getElementById('toggleTheme').addEventListener('click', toggleTheme);
+  document.getElementById('openEditor').addEventListener('click', ()=>{ document.getElementById('openEditor').animate([{transform:'scale(1)'},{transform:'scale(1.06)'}],{duration:260,iterations:1}); document.getElementById('name').focus(); });
+  document.getElementById('deployGuide').addEventListener('click', (e)=>{ e.preventDefault(); alert('Upload file index.html ke repo semznotme-eng.github.io dan buka https://semznotme-eng.github.io'); });
+  // contenteditable save handlers
+  document.querySelectorAll('[contenteditable]').forEach(el=>{
+    el.addEventListener('input', ()=>{
+      persistFromDOM();
+      saveState(state);
+    });
+  });
+});
+
+function persistFromDOM(){
+  state.name = document.getElementById('name').innerText.trim();
+  state.about = document.querySelector('#about .editable').innerText.trim();
+  // projects coerced from DOM list
+  const nodes = document.querySelectorAll('#projectGrid .project');
+  state.projects = Array.from(nodes).map(n=>({title:n.querySelector('h4').innerText, desc:n.querySelector('p').innerText}));
+  saveState(state);
+}
+
+function renderProjects(){
+  const grid = document.getElementById('projectGrid');
+  grid.innerHTML = '';
+  state.projects.forEach((p, idx)=>{
+    const el = document.createElement('div');
+    el.className = 'project';
+    el.setAttribute('role','listitem');
+    el.innerHTML = `<h4 contenteditable="true">${escapeHtml(p.title)}</h4><p contenteditable="true">${escapeHtml(p.desc)}</p><div style="margin-top:10px"><button data-idx="${idx}" class="btn ghost smallBtn">Delete</button></div>`;
+    grid.appendChild(el);
+  });
+  // attach events for editable project content and delete
+  grid.querySelectorAll('.project').forEach((node, idx)=>{
+    node.querySelectorAll('[contenteditable]').forEach(ce=>{
+      ce.addEventListener('input', ()=> { persistFromDOM(); });
+    });
+    const del = node.querySelector('button[data-idx]');
+    del.addEventListener('click', ()=>{
+      if(confirm('Hapus project ini?')){
+        state.projects.splice(idx,1);
+        renderProjects(); persistFromDOM();
+      }
+    });
+  });
+  // add "Add project" card at end
+  const addCard = document.createElement('div');
+  addCard.className = 'project';
+  addCard.style.display='flex'; addCard.style.alignItems='center'; addCard.style.justifyContent='center';
+  addCard.innerHTML = '<button class="btn" id="addNew">Tambah Project</button>';
+  grid.appendChild(addCard);
+  document.getElementById('addNew').addEventListener('click', ()=>{
+    state.projects.unshift({title:'Project baru — klik untuk edit', desc:'Deskripsi singkat'});
+    renderProjects(); persistFromDOM();
+  });
+}
+
+// Escape helper
+function escapeHtml(s){ return (s+'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// Theme toggle (simple: invert to light)
+function toggleTheme(){
+  if(state.theme==='dark'){ state.theme='light'; document.documentElement.style.background='linear-gradient(white, #f4f6f8)'; document.body.style.color='#0b1220'; }
+  else { state.theme='dark'; document.documentElement.style.background='radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent), var(--bg)'; document.body.style.color=''; }
+  saveState(state);
+}
+
+// Export current DOM as single-file HTML (inline styles kept minimal)
+function downloadHTML(){
+  persistFromDOM();
+  const head = document.querySelector('head').innerHTML;
+  const body = document.querySelector('body').innerHTML;
+  const doc = `<!doctype html><html lang="id"><head>${head}</head><body>${body}<script>/* Static exported page (no editing JS) */</script></body></html>`;
+  const blob = new Blob([doc], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download='index.html'; a.click(); URL.revokeObjectURL(url);
+}
+
+// Auto-save every 3s
+setInterval(()=>{ persistFromDOM(); saveState(state); }, 3000);
+
+// Expose for console / debugging
+window._GACOR_ULTRA = { state, saveState, loadState };
+
+</script>
+</body>
+</html>
